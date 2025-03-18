@@ -1,7 +1,5 @@
-# Please do not directly edit this file. Instead, modify the .env variables related to NGINX configuration.
-
 upstream web {
-    server web:3000;  #  指向名为 "web" 的 Docker 服务，端口为 3000 (web 容器内部端口)
+    server web:3000;
 }
 
 server {
@@ -29,7 +27,7 @@ server {
     }
 
     location /explore {
-      proxy_pass http://web;  #  使用定义的 upstream web
+      proxy_pass http://web;
       include proxy.conf;
     }
 
@@ -40,7 +38,7 @@ server {
     }
 
     location / {
-      proxy_pass http://web;  #  使用定义的 upstream web
+      proxy_pass http://web;
       include proxy.conf;
     }
 
